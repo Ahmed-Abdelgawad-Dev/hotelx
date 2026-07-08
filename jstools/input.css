@@ -1,0 +1,154 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@source "../hotelx/templates";
+@source "../hotelx/static";
+
+/* ============================================
+   hotelx — Custom Theme & Design System
+   ============================================ */
+
+/* --- Theme Colors --- */
+@theme {
+  --color-brand-50: #f0f7ff;
+  --color-brand-100: #e0effe;
+  --color-brand-200: #b9dffc;
+  --color-brand-300: #7cc5fa;
+  --color-brand-400: #36a9f5;
+  --color-brand-500: #0c8ee7;
+  --color-brand-600: #0070c4;
+  --color-brand-700: #01599f;
+  --color-brand-800: #064c83;
+  --color-brand-900: #0b406d;
+  --color-brand-950: #072849;
+
+  --color-gold-50: #fffdf0;
+  --color-gold-100: #fff9d0;
+  --color-gold-200: #fff39e;
+  --color-gold-300: #ffe863;
+  --color-gold-400: #ffd82a;
+  --color-gold-500: #f9be07;
+  --color-gold-600: #dd9702;
+  --color-gold-700: #b76b06;
+  --color-gold-800: #92530e;
+  --color-gold-900: #78430f;
+  --color-gold-950: #452204;
+
+  --font-heading: "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --animate-pulse-slow: pulse-slow 4s ease-in-out infinite;
+}
+
+/* --- Keyframes --- */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* --- Base Styles --- */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* --- Scroll Progress Bar --- */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  z-index: 9999;
+  background: linear-gradient(90deg, #6366f1, #06b6d4, #f59e0b);
+  transition: width 50ms linear;
+}
+
+/* --- Glass Panel --- */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* --- Gradient Text --- */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1, #06b6d4, #f59e0b) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* --- Grid Pattern Background --- */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* --- Canvas Backgrounds --- */
+.canvas-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Animation Delay Utilities --- */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* --- Conic Gradient Border (for interactive elements) --- */
+.conic-border {
+  position: relative;
+}
+
+.conic-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    transparent,
+    #6366f1,
+    #06b6d4,
+    #f59e0b,
+    transparent
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: gradient-rotate 3s linear infinite;
+}
+
+@keyframes gradient-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* --- Smooth entrance utility (used by IntersectionObserver JS) --- */
+.reveal-fade,
+.reveal-stagger {
+  will-change: transform, opacity;
+}

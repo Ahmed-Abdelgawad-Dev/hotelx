@@ -1,0 +1,108 @@
+{% load static %}
+<section id="about" class="relative py-24 lg:py-32 bg-base-300 overflow-hidden" aria-label="About us">
+  <!-- Canvas background: Data Flow Sine Waves -->
+  <canvas id="about-canvas" class="canvas-bg" aria-hidden="true"></canvas>
+
+  <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Image column -->
+      <div class="relative reveal-fade">
+        <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+               alt="hotelx luxury hotel exterior and swimming pool"
+               class="w-full h-[400px] md:h-[500px] object-cover"
+               loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </div>
+        <!-- Decorative element -->
+        <div class="absolute -bottom-4 -right-4 w-full h-full border border-primary/20 rounded-2xl z-0 hidden md:block"></div>
+        <!-- Floating badge -->
+        <div class="absolute -bottom-6 -left-6 z-20 bg-base-300/90 backdrop-blur-md rounded-2xl shadow-xl p-5 hidden md:flex items-center gap-4 border border-base-content/10 glass-panel">
+          <div class="flex -space-x-2">
+            <div class="avatar">
+              <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold ring-2 ring-base-300">A</div>
+            </div>
+            <div class="avatar">
+              <div class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold ring-2 ring-base-300">M</div>
+            </div>
+            <div class="avatar">
+              <div class="w-10 h-10 rounded-full bg-gold-400 text-white flex items-center justify-center text-sm font-bold ring-2 ring-base-300">S</div>
+            </div>
+          </div>
+          <div>
+            <div class="font-bold text-base-content">5,000+</div>
+            <div class="text-xs text-base-content/60">Happy Guests Served</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content column -->
+      <div class="reveal-fade">
+        <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">Our Story</span>
+        <h2 class="text-4xl sm:text-5xl font-bold text-base-content mb-6 leading-tight">
+          A Legacy of<br />
+          <span class="gradient-text">Exceptional Hospitality</span>
+        </h2>
+        <p class="text-base-content/70 text-base sm:text-lg leading-relaxed mb-6">
+          Founded in 2010, hotelx has been synonymous with luxury and comfort. Nestled in the heart of the city,
+          our hotel combines timeless elegance with modern sophistication to create an unforgettable experience
+          for every guest.
+        </p>
+        <p class="text-base-content/60 text-sm sm:text-base leading-relaxed mb-8">
+          From our world-class spa to our Michelin-starred restaurant, every detail is crafted with care.
+          Our dedicated team of hospitality professionals ensures that your stay exceeds expectations.
+        </p>
+
+        <!-- Features grid -->
+        <div class="grid grid-cols-2 gap-4 sm:gap-6">
+          <div class="flex items-start gap-3 glass-panel rounded-xl p-4">
+            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-base-content text-sm">Spa &amp; Wellness</h4>
+              <p class="text-xs text-base-content/50 mt-0.5">Relax and rejuvenate</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 glass-panel rounded-xl p-4">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-base-content text-sm">24/7 Service</h4>
+              <p class="text-xs text-base-content/50 mt-0.5">Always at your service</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 glass-panel rounded-xl p-4">
+            <div class="w-10 h-10 rounded-lg bg-gold-400/10 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gold-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-base-content text-sm">Fine Dining</h4>
+              <p class="text-xs text-base-content/50 mt-0.5">Michelin-starred cuisine</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 glass-panel rounded-xl p-4">
+            <div class="w-10 h-10 rounded-lg bg-brand-500/10 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-base-content text-sm">Prime Location</h4>
+              <p class="text-xs text-base-content/50 mt-0.5">Heart of the city</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,128 @@
+{% load static %}
+<section id="why-choose" class="relative py-24 lg:py-32 bg-base-100 overflow-hidden" aria-label="Why choose us">
+  <!-- Canvas background: Rising Ember Particles -->
+  <canvas id="why-choose-canvas" class="canvas-bg" aria-hidden="true"></canvas>
+
+  <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal-fade">
+      <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">Why hotelx</span>
+      <h2 class="text-4xl sm:text-5xl font-bold text-base-content mb-6">
+        Designed for <span class="gradient-text">Extraordinary</span> Experiences
+      </h2>
+      <p class="text-base-content/60 text-lg font-light leading-relaxed">
+        Every detail, from architecture to hospitality, is crafted to make your stay unforgettable.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Feature 1 -->
+      <div
+        class="glass-panel rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 reveal-stagger group">
+        <div
+          class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-base-content mb-3">24/7 Concierge</h3>
+        <p class="text-base-content/60 text-sm leading-relaxed">
+          Our multilingual concierge team is available around the clock to cater to your every need, from restaurant
+          reservations to excursion planning.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div
+        class="glass-panel rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 reveal-stagger group">
+        <div
+          class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-accent/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-base-content mb-3">Prime Location</h3>
+        <p class="text-base-content/60 text-sm leading-relaxed">
+          Situated in the heart of the city, steps away from major attractions, shopping districts, and fine dining
+          establishments.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div
+        class="glass-panel rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 reveal-stagger group">
+        <div
+          class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gold-400/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gold-400" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-base-content mb-3">Luxury Spa</h3>
+        <p class="text-base-content/60 text-sm leading-relaxed">
+          Rejuvenate body and soul at our award-winning spa featuring traditional treatments, sauna, steam room, and a
+          heated indoor pool.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div
+        class="glass-panel rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 reveal-stagger group">
+        <div
+          class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-brand-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-500" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-base-content mb-3">Best Rate Guarantee</h3>
+        <p class="text-base-content/60 text-sm leading-relaxed">
+          Book directly with us and enjoy our best available rates, exclusive perks, and flexible cancellation policies.
+        </p>
+      </div>
+
+      <!-- Feature 5 -->
+      <div
+        class="glass-panel rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 reveal-stagger group">
+        <div
+          class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-base-content mb-3">Safe &amp; Secure</h3>
+        <p class="text-base-content/60 text-sm leading-relaxed">
+          Your safety is our priority. With 24/7 security, contactless check-in, and rigorous cleaning protocols, rest
+          easy with us.
+        </p>
+      </div>
+
+      <!-- Feature 6 -->
+      <div
+        class="glass-panel rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 reveal-stagger group">
+        <div
+          class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-accent/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-base-content mb-3">Easy Booking</h3>
+        <p class="text-base-content/60 text-sm leading-relaxed">
+          Our streamlined booking process makes reserving your perfect room quick and hassle-free. Manage your
+          reservation online anytime.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

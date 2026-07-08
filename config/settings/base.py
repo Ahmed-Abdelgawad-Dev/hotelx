@@ -77,11 +77,13 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.mfa",
     "allauth.socialaccount",
+    "imagekit",
 ]
 
 LOCAL_APPS = [
     "hotelx.users",
     "hotelx.core",
+    "hotelx.rooms",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

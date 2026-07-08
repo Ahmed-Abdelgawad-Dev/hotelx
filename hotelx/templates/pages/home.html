@@ -1,3 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
+{% block title %}hotelx — Luxury Hotel & Resort{% endblock title %}
 
+{% block content %}
+  {% include "landing/hero.html" %}
+  {% include "landing/rooms.html" %}
+  {% include "landing/about.html" %}
+  {% include "landing/why-choose-us.html" %}
+  {% include "landing/reviews.html" %}
+  {% include "landing/faq.html" %}
+  {% include "landing/newsletter.html" %}
+{% endblock content %}

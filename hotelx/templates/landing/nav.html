@@ -1,0 +1,96 @@
+{% load static i18n %}
+<nav class="navbar fixed top-0 left-0 right-0 z-50 bg-base-300/80 backdrop-blur-xl transition-all duration-300"
+  id="mainNav" aria-label="Main navigation" x-data="{ scrolled: false }"
+  x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 50)"
+  :class="{ 'shadow-lg bg-base-300/95': scrolled, 'shadow-none': !scrolled }">
+
+  <div class="navbar-start">
+    <!-- Mobile menu toggle -->
+    <button class="btn btn-ghost lg:hidden" aria-label="Toggle navigation menu" aria-expanded="false"
+      :aria-expanded="mobileMenuOpen" @click="mobileMenuOpen = !mobileMenuOpen">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        x-show="!mobileMenuOpen">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        x-show="mobileMenuOpen" x-cloak>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <a href="{% url 'home' %}" class="btn btn-ghost text-xl font-heading font-bold tracking-wide text-base-content">
+      <span class="text-primary">hotel</span><span class="text-accent">x</span>
+    </a>
+  </div>
+
+  <!-- Desktop nav -->
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1 gap-1">
+      <li><a href="#hero" class="font-medium text-sm tracking-wide hover:text-primary transition-colors">Home</a></li>
+      <li><a href="#rooms" class="font-medium text-sm tracking-wide hover:text-primary transition-colors">Rooms</a></li>
+      <li><a href="#about" class="font-medium text-sm tracking-wide hover:text-primary transition-colors">About</a></li>
+      <li><a href="#why-choose" class="font-medium text-sm tracking-wide hover:text-primary transition-colors">Why
+          Us</a></li>
+      <li><a href="#reviews" class="font-medium text-sm tracking-wide hover:text-primary transition-colors">Reviews</a>
+      </li>
+      <li><a href="#faq" class="font-medium text-sm tracking-wide hover:text-primary transition-colors">FAQ</a></li>
+      <li><a href="#newsletter"
+          class="font-medium text-sm tracking-wide hover:text-primary transition-colors">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="navbar-end gap-1 sm:gap-2">
+    <!-- Theme toggle -->
+    <button class="btn btn-ghost btn-sm btn-square glass-panel" aria-label="Toggle theme"
+      @click="theme = theme === 'dark' ? 'light' : 'dark'; localStorage.setItem('theme', theme); document.documentElement.setAttribute('data-theme', theme)">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        x-show="theme === 'dark'">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        x-show="theme === 'light'" x-cloak>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+      </svg>
+    </button>
+
+    <a href="#hero" class="btn btn-accent btn-sm text-white font-semibold shadow-lg shadow-accent/20">Book Now</a>
+  </div>
+
+  <!-- Mobile drawer overlay -->
+  <div x-show="mobileMenuOpen" x-cloak x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0" class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+    @click="mobileMenuOpen = false" aria-hidden="true">
+  </div>
+
+  <!-- Mobile drawer panel -->
+  <div x-show="mobileMenuOpen" x-cloak x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
+    x-transition:leave="transition ease-in duration-200" x-transition:leave-start="translate-x-0"
+    x-transition:leave-end="-translate-x-full"
+    class="fixed top-0 left-0 z-50 h-full w-72 bg-base-300 shadow-2xl lg:hidden" role="dialog" aria-modal="true"
+    aria-label="Mobile navigation">
+    <div class="flex items-center justify-between p-4 border-b border-base-content/10">
+      <a href="{% url 'home' %}" class="text-xl font-heading font-bold" @click="mobileMenuOpen = false">
+        <span class="text-primary">hotel</span><span class="text-accent">x</span>
+      </a>
+      <button class="btn btn-ghost btn-sm btn-square" @click="mobileMenuOpen = false" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <ul class="menu p-4 w-full" @click="mobileMenuOpen = false">
+      <li><a href="#hero" class="text-base font-medium py-3">Home</a></li>
+      <li><a href="#rooms" class="text-base font-medium py-3">Rooms</a></li>
+      <li><a href="#about" class="text-base font-medium py-3">About</a></li>
+      <li><a href="#why-choose" class="text-base font-medium py-3">Why Us</a></li>
+      <li><a href="#reviews" class="text-base font-medium py-3">Reviews</a></li>
+      <li><a href="#faq" class="text-base font-medium py-3">FAQ</a></li>
+      <li><a href="#newsletter" class="text-base font-medium py-3">Contact</a></li>
+    </ul>
+  </div>
+</nav>

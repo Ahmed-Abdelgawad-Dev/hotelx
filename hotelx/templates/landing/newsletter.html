@@ -1,0 +1,80 @@
+{% load static %}
+<section id="newsletter" class="relative py-24 lg:py-32 bg-base-300 overflow-hidden" aria-label="Newsletter signup">
+  <!-- Canvas background: Pulsing Energy Rings -->
+  <canvas id="newsletter-canvas" class="canvas-bg" aria-hidden="true"></canvas>
+
+  <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="relative overflow-hidden rounded-3xl glass-panel shadow-2xl border border-base-content/10">
+      <!-- Decorative elements -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+
+      <div class="relative z-10 px-8 py-16 sm:px-16 sm:py-20 lg:px-24 text-center">
+        <div class="max-w-2xl mx-auto reveal-fade">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-base-content mb-4 leading-tight">
+            Stay in the <span class="gradient-text">Loop</span>
+          </h2>
+          <p class="text-base-content/60 text-base sm:text-lg font-light mb-2 leading-relaxed">
+            Subscribe to our newsletter and be the first to know about exclusive offers,
+            seasonal promotions, and special packages.
+          </p>
+          <p class="text-base-content/40 text-sm mb-8">
+            No spam. Unsubscribe anytime.
+          </p>
+
+          <!-- Signup form with HTMX -->
+          <div id="newsletter-form-container">
+            <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
+                  aria-label="Newsletter signup form"
+                  hx-post="#"
+                  hx-target="#newsletter-form-container"
+                  hx-swap="outerHTML"
+                  hx-trigger="submit"
+                  @submit.prevent="$event.target.querySelector('button').innerHTML = 'Subscribing...'">
+              <label for="newsletter-email" class="sr-only">Email address</label>
+              <input
+                id="newsletter-email"
+                type="email"
+                name="email"
+                placeholder="Enter your email address"
+                class="input input-bordered bg-base-200/50 border-base-content/20 text-base-content placeholder:text-base-content/40 w-full focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                required
+                aria-required="true"
+              />
+              <button type="submit" class="btn btn-accent text-white font-semibold px-8 border-0 shadow-lg shadow-accent/25 hover:shadow-xl transition-all duration-300">
+                Subscribe
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- Trust badges -->
+          <div class="flex flex-wrap items-center justify-center gap-6 mt-10 text-base-content/30 text-xs">
+            <span class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              Secure &amp; Private
+            </span>
+            <span class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              No Spam Guarantee
+            </span>
+            <span class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              Exclusive Offers
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

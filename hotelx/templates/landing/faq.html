@@ -1,0 +1,136 @@
+{% load static %}
+<section id="faq" class="relative py-24 lg:py-32 bg-base-300 overflow-hidden" aria-label="Frequently asked questions">
+  <!-- Canvas background: Fluid Morphing Blobs -->
+  <canvas id="faq-canvas" class="canvas-bg" aria-hidden="true"></canvas>
+
+  <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10" x-data="{ openFaq: null }">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal-fade">
+      <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">FAQ</span>
+      <h2 class="text-4xl sm:text-5xl font-bold text-base-content mb-6">
+        Frequently <span class="gradient-text">Asked Questions</span>
+      </h2>
+      <p class="text-base-content/60 text-lg font-light leading-relaxed">
+        Everything you need to know about your stay at hotelx.
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-4">
+      <!-- FAQ Item 1 -->
+      <div class="glass-panel rounded-2xl overflow-hidden transition-all duration-300"
+        :class="{ 'shadow-lg': openFaq === 1 }">
+        <button class="w-full flex items-center justify-between p-6 text-left"
+          @click="openFaq = openFaq === 1 ? null : 1" :aria-expanded="openFaq === 1" aria-controls="faq-answer-1">
+          <span class="text-base font-semibold text-base-content">What time is check-in and check-out?</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-base-content/50 transition-transform duration-300"
+            :class="{ 'rotate-180': openFaq === 1 }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="faq-answer-1" x-show="openFaq === 1" x-collapse x-cloak class="px-6 pb-6">
+          <p class="text-base-content/60 text-sm leading-relaxed">
+            Check-in begins at 3:00 PM and check-out is at 11:00 AM. Early check-in and late check-out are available
+            upon request and subject to availability. Our front desk is open 24/7 to assist you.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="glass-panel rounded-2xl overflow-hidden transition-all duration-300"
+        :class="{ 'shadow-lg': openFaq === 2 }">
+        <button class="w-full flex items-center justify-between p-6 text-left"
+          @click="openFaq = openFaq === 2 ? null : 2" :aria-expanded="openFaq === 2" aria-controls="faq-answer-2">
+          <span class="text-base font-semibold text-base-content">Do you offer airport transfer services?</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-base-content/50 transition-transform duration-300"
+            :class="{ 'rotate-180': openFaq === 2 }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="faq-answer-2" x-show="openFaq === 2" x-collapse x-cloak class="px-6 pb-6">
+          <p class="text-base-content/60 text-sm leading-relaxed">
+            Yes, we provide luxury airport transfer services in our fleet of premium vehicles. Please contact our
+            concierge at least 24 hours before your arrival to arrange pickup. Additional charges apply.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="glass-panel rounded-2xl overflow-hidden transition-all duration-300"
+        :class="{ 'shadow-lg': openFaq === 3 }">
+        <button class="w-full flex items-center justify-between p-6 text-left"
+          @click="openFaq = openFaq === 3 ? null : 3" :aria-expanded="openFaq === 3" aria-controls="faq-answer-3">
+          <span class="text-base font-semibold text-base-content">Is breakfast included in the room rate?</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-base-content/50 transition-transform duration-300"
+            :class="{ 'rotate-180': openFaq === 3 }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="faq-answer-3" x-show="openFaq === 3" x-collapse x-cloak class="px-6 pb-6">
+          <p class="text-base-content/60 text-sm leading-relaxed">
+            Complimentary breakfast is included with select room packages and direct bookings. Our restaurant serves a
+            lavish buffet from 7:00 AM to 10:30 AM daily. Please check your booking confirmation for details.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="glass-panel rounded-2xl overflow-hidden transition-all duration-300"
+        :class="{ 'shadow-lg': openFaq === 4 }">
+        <button class="w-full flex items-center justify-between p-6 text-left"
+          @click="openFaq = openFaq === 4 ? null : 4" :aria-expanded="openFaq === 4" aria-controls="faq-answer-4">
+          <span class="text-base font-semibold text-base-content">Do you allow pets?</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-base-content/50 transition-transform duration-300"
+            :class="{ 'rotate-180': openFaq === 4 }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="faq-answer-4" x-show="openFaq === 4" x-collapse x-cloak class="px-6 pb-6">
+          <p class="text-base-content/60 text-sm leading-relaxed">
+            Yes, we welcome well-behaved pets! Our pet-friendly rooms include a cozy bed, bowls, and treats. A one-time
+            cleaning fee applies. Please notify us at the time of booking so we can prepare your room accordingly.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 5 -->
+      <div class="glass-panel rounded-2xl overflow-hidden transition-all duration-300"
+        :class="{ 'shadow-lg': openFaq === 5 }">
+        <button class="w-full flex items-center justify-between p-6 text-left"
+          @click="openFaq = openFaq === 5 ? null : 5" :aria-expanded="openFaq === 5" aria-controls="faq-answer-5">
+          <span class="text-base font-semibold text-base-content">Can I cancel or modify my reservation?</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-base-content/50 transition-transform duration-300"
+            :class="{ 'rotate-180': openFaq === 5 }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="faq-answer-5" x-show="openFaq === 5" x-collapse x-cloak class="px-6 pb-6">
+          <p class="text-base-content/60 text-sm leading-relaxed">
+            Absolutely. Free cancellation is available up to 48 hours before check-in for most room types. Modifications
+            can be made through your account or by contacting our reservations team directly.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 6 -->
+      <div class="glass-panel rounded-2xl overflow-hidden transition-all duration-300"
+        :class="{ 'shadow-lg': openFaq === 6 }">
+        <button class="w-full flex items-center justify-between p-6 text-left"
+          @click="openFaq = openFaq === 6 ? null : 6" :aria-expanded="openFaq === 6" aria-controls="faq-answer-6">
+          <span class="text-base font-semibold text-base-content">What amenities are available at the hotel?</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-base-content/50 transition-transform duration-300"
+            :class="{ 'rotate-180': openFaq === 6 }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="faq-answer-6" x-show="openFaq === 6" x-collapse x-cloak class="px-6 pb-6">
+          <p class="text-base-content/60 text-sm leading-relaxed">
+            We offer a wide range of amenities including a rooftop infinity pool, fully-equipped fitness center,
+            award-winning spa, Michelin-starred restaurant, business center, complimentary WiFi, valet parking, and
+            24-hour room service.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

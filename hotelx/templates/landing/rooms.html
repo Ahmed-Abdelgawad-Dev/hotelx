@@ -1,0 +1,170 @@
+{% load static %}
+<section id="rooms" class="relative py-24 lg:py-32 bg-base-100 overflow-hidden" aria-label="Rooms and suites">
+  <!-- Canvas background: Floating Geometric Shapes -->
+  <canvas id="rooms-canvas" class="canvas-bg" aria-hidden="true"></canvas>
+
+  <!-- Background decoration -->
+  <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-primary/5 to-transparent pointer-events-none"></div>
+  <div class="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none"></div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal-fade">
+      <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">Accommodations</span>
+      <h2 class="text-4xl sm:text-5xl font-bold text-base-content mb-6">
+        Luxurious Rooms &amp; <span class="gradient-text">Suites</span>
+      </h2>
+      <p class="text-base-content/60 text-lg font-light leading-relaxed">
+        Each of our rooms is thoughtfully designed to provide the perfect blend of comfort, elegance, and modern convenience.
+      </p>
+    </div>
+
+    <!-- Room cards grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Room 1: Deluxe Suite -->
+      <div class="card bg-base-200/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 group reveal-stagger overflow-hidden border border-base-content/5">
+        <figure class="relative h-64 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+          <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+               alt="Deluxe Suite with panoramic view"
+               class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+               loading="lazy" />
+          <div class="absolute top-4 right-4 z-20">
+            <span class="badge badge-accent text-white font-semibold px-3 py-2 glass-panel">Best Seller</span>
+          </div>
+          <div class="absolute bottom-4 left-4 z-20">
+            <h3 class="text-2xl font-bold text-white">Deluxe Suite</h3>
+          </div>
+        </figure>
+        <div class="card-body p-6">
+          <div class="flex items-center justify-between mb-3">
+            <div class="rating rating-sm">
+              <input type="radio" name="rating-1" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="rating-1" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="rating-1" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="rating-1" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="rating-1" class="mask mask-star-2 bg-gold-400" disabled checked />
+            </div>
+            <span class="text-sm text-base-content/60">4.9 (120 reviews)</span>
+          </div>
+          <p class="text-base-content/70 text-sm leading-relaxed mb-4">
+            Spacious suite with panoramic city views, king-sized bed, marble bathroom, and private balcony.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="badge badge-ghost badge-sm">45 m²</span>
+            <span class="badge badge-ghost badge-sm">King Bed</span>
+            <span class="badge badge-ghost badge-sm">Up to 3 Guests</span>
+            <span class="badge badge-ghost badge-sm">Free WiFi</span>
+          </div>
+          <div class="divider my-2"></div>
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-2xl font-bold text-primary">$299</span>
+              <span class="text-sm text-base-content/50">/ night</span>
+            </div>
+            <a href="#" class="btn btn-primary btn-sm text-white">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 2: Premium Ocean View -->
+      <div class="card bg-base-200/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 group reveal-stagger overflow-hidden border border-base-content/5">
+        <figure class="relative h-64 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+          <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+               alt="Premium Ocean View room"
+               class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+               loading="lazy" />
+          <div class="absolute bottom-4 left-4 z-20">
+            <h3 class="text-2xl font-bold text-white">Premium Ocean View</h3>
+          </div>
+        </figure>
+        <div class="card-body p-6">
+          <div class="flex items-center justify-between mb-3">
+            <div class="rating rating-sm">
+              <input type="radio" name="rating-2" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="rating-2" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="rating-2" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="rating-2" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="rating-2" class="mask mask-star-2 bg-gold-400" disabled />
+            </div>
+            <span class="text-sm text-base-content/60">4.8 (95 reviews)</span>
+          </div>
+          <p class="text-base-content/70 text-sm leading-relaxed mb-4">
+            Breathtaking ocean views from your private terrace. Features a super king bed and deep soaking tub.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="badge badge-ghost badge-sm">50 m²</span>
+            <span class="badge badge-ghost badge-sm">Super King</span>
+            <span class="badge badge-ghost badge-sm">Up to 2 Guests</span>
+            <span class="badge badge-ghost badge-sm">Ocean View</span>
+          </div>
+          <div class="divider my-2"></div>
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-2xl font-bold text-primary">$399</span>
+              <span class="text-sm text-base-content/50">/ night</span>
+            </div>
+            <a href="#" class="btn btn-primary btn-sm text-white">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 3: Presidential Penthouse -->
+      <div class="card bg-base-200/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 group reveal-stagger overflow-hidden border border-base-content/5">
+        <figure class="relative h-64 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+               alt="Presidential Penthouse"
+               class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+               loading="lazy" />
+          <div class="absolute top-4 right-4 z-20">
+            <span class="badge badge-primary text-white font-semibold px-3 py-2 glass-panel">Premium</span>
+          </div>
+          <div class="absolute bottom-4 left-4 z-20">
+            <h3 class="text-2xl font-bold text-white">Presidential Penthouse</h3>
+          </div>
+        </figure>
+        <div class="card-body p-6">
+          <div class="flex items-center justify-between mb-3">
+            <div class="rating rating-sm">
+              <input type="radio" name="rating-3" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="rating-3" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="rating-3" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="rating-3" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="rating-3" class="mask mask-star-2 bg-gold-400" disabled checked />
+            </div>
+            <span class="text-sm text-base-content/60">5.0 (48 reviews)</span>
+          </div>
+          <p class="text-base-content/70 text-sm leading-relaxed mb-4">
+            Our pinnacle of luxury. Two floors of exquisite living space with a private rooftop pool and butler service.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="badge badge-ghost badge-sm">120 m²</span>
+            <span class="badge badge-ghost badge-sm">King Bed</span>
+            <span class="badge badge-ghost badge-sm">Up to 5 Guests</span>
+            <span class="badge badge-ghost badge-sm">Private Pool</span>
+          </div>
+          <div class="divider my-2"></div>
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-2xl font-bold text-primary">$899</span>
+              <span class="text-sm text-base-content/50">/ night</span>
+            </div>
+            <a href="#" class="btn btn-primary btn-sm text-white">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- View all CTA -->
+    <div class="text-center mt-12 reveal-fade">
+      <a href="#" class="btn btn-outline btn-lg px-10 font-semibold glass-panel">
+        View All Rooms &amp; Suites
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

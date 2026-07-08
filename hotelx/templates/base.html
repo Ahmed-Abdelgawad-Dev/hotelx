@@ -1,145 +1,114 @@
-
-{% load static i18n compress%}<!DOCTYPE html>
+{% load static i18n compress %}
+<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}
-<html lang="{{ LANGUAGE_CODE }}">
+<html lang="{{ LANGUAGE_CODE }}"
+      data-theme="dark"
+      x-data="{ mobileMenuOpen: false, theme: localStorage.getItem('theme') || 'dark' }"
+      x-init="document.documentElement.setAttribute('data-theme', theme)">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>
       {% block title %}
-      hotelx
-    {% endblock title %}
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-        content="Behold My Awesome Project!" />
-  <meta name="author"
-        content="Ahmed Abdel Moneim" />
-  <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
-  {% block css %}
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
-          integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer" />
-<!-- Your stuff: Third-party CSS libraries go here -->
-<!-- This file stores project-specific CSS -->
+        hotelx — Luxury Hotel & Resort
+      {% endblock title %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Experience luxury at hotelx — your perfect getaway with premium rooms, exceptional service, and unforgettable memories." />
+    <meta name="author" content="Ahmed Abdel Moneim" />
+    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
 
+    <!-- Google Fonts: Inter (300–800) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-{% compress css %}
-  <link href="{% static 'css/project.css' %}" rel="stylesheet" />
-{% endcompress %}
+    {% block css %}
+      {% compress css %}
+        <link href="{% static 'css/project.css' %}" rel="stylesheet" />
+      {% endcompress %}
+    {% endblock css %}
 
+    {% block javascript %}
+      <!-- Alpine.js -->
+      <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
+      <!-- HTMX -->
+      <script defer src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.4/dist/htmx.min.js"></script>
+      <!-- GSAP -->
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+      <!-- Typed.js -->
+      <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js"></script>
+      {% compress js %}
+        <script defer src="{% static 'js/project.js' %}"></script>
+      {% endcompress %}
+    {% endblock javascript %}
+  </head>
 
-{% endblock css %}
-<!-- Le javascript
-    ================================================== -->
-{# Placed at the top of the document so pages load faster with defer #}
-{% block javascript %}
+  <body class="min-h-screen bg-base-300 font-body {% block bodyclass %}{% endblock bodyclass %}"
+        :class="{ 'overflow-hidden': mobileMenuOpen }">
 
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress" role="progressbar" aria-valuenow="0" aria-label="Page scroll progress"></div>
 
-<!-- Bootstrap JS -->
-<script defer
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
-        integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"></script>
-<!-- Your stuff: Third-party javascript libraries go here -->
+    {% block body %}
+      {% block nav %}
+        {% include "landing/nav.html" %}
+      {% endblock nav %}
 
-
-<!-- place project specific Javascript in this file -->
-
-
-{% compress js %}
-  <script defer src="{% static 'js/project.js' %}"></script>
-{% endcompress %}
-
-
-{% endblock javascript %}
-</head>
-<body class="{% block bodyclass %}{% endblock bodyclass %}">
-  {% block body %}
-  <div class="mb-1">
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <div class="container-fluid">
-        <button class="navbar-toggler navbar-toggler-right"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="{% url 'home' %}">hotelx</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}">About</a>
-            </li>
-            {% if request.user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link"
-                   href="{% url 'users:detail' request.user.pk %}">{% translate "My Profile" %}</a>
-              </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
-              </li>
-            {% else %}
-              {% if ACCOUNT_ALLOW_REGISTRATION %}
-                <li class="nav-item">
-                  {# URL provided by django-allauth/account/urls.py #}
-                  <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% translate "Sign Up" %}</a>
-                </li>
-              {% endif %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
-              </li>
-            {% endif %}
-          </ul>
+      {% if messages %}
+        <div class="container mx-auto px-4 pt-4">
+          {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}error{% elif message.tags %}{{ message.tags }}{% else %}info{% endif %} shadow-lg mb-4"
+                 x-data="{ show: true }"
+                 x-show="show"
+                 x-init="setTimeout(() => show = false, 5000)">
+              <span>{{ message }}</span>
+              <button class="btn btn-ghost btn-xs btn-circle" @click="show = false" aria-label="Dismiss">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          {% endfor %}
         </div>
-      </div>
-    </nav>
-  </div>
-  <div class="container">
-    {% if messages %}
-      {% for message in messages %}
-        <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-          {{ message }}
-          <button type="button"
-                  class="btn-close"
-                  data-bs-dismiss="alert"
-                  aria-label="Close"></button>
-        </div>
-      {% endfor %}
-    {% endif %}
-    {% block main %}
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
-    {% endblock main %}
+      {% endif %}
 
-  </div>
-  {% endblock body %}
-  <!-- /container -->
-  {% block modal %}
-  {% endblock modal %}
-  {% block inline_javascript %}
-    {% comment %}
-    Script tags with only code, no src (defer by default). To run
-    with a "defer" so that you run inline code:
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        /* Run whatever you want */
-      });
-    </script>
-    {% endcomment %}
-  {% endblock inline_javascript %}
-</body>
+      {% block main %}
+        {% block content %}
+        {% endblock content %}
+      {% endblock main %}
+
+      {% block footer %}
+        {% include "landing/footer.html" %}
+      {% endblock footer %}
+    {% endblock body %}
+
+    <!-- WhatsApp Floating Action Button -->
+    <div class="fixed bottom-6 right-6 z-50" x-data="{ waHover: false }">
+      <a href="https://wa.me/1234567890?text=Hello%20hotelx!%20I'd%20like%20to%20make%20an%20inquiry."
+         target="_blank"
+         rel="noopener noreferrer"
+         class="flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
+         aria-label="Contact us on WhatsApp"
+         @mouseenter="waHover = true"
+         @mouseleave="waHover = false">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </a>
+      <span x-show="waHover"
+            x-cloak
+            x-transition
+            class="absolute right-16 top-1/2 -translate-y-1/2 bg-base-100 text-base-content text-sm font-medium px-3 py-1.5 rounded-lg shadow-md whitespace-nowrap">
+        Chat with us
+      </span>
+    </div>
+
+    {% block modal %}
+    {% endblock modal %}
+
+    {% block inline_javascript %}
+    {% endblock inline_javascript %}
+  </body>
 </html>
