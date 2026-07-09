@@ -686,7 +686,94 @@ document.addEventListener('DOMContentLoaded', function () {
   })();
 
   // ============================================================
-  // 4g. CTA/NEWSLETTER — Pulsing Energy Rings
+  // 4g. TEAM — Shooting Stars
+  // ============================================================
+  (function () {
+    var setup = setupCanvas('team-canvas');
+    if (!setup) return;
+    var canvas = setup.canvas;
+    var ctx = setup.ctx;
+    visibilityObserver.observe(canvas);
+
+    var stars = [];
+
+    function spawnStar() {
+      var startX = Math.random() * canvas.width;
+      var angle = Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 0.4;
+      var speed = Math.random() * 4 + 2;
+      stars.push({
+        x: startX,
+        y: -10,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        length: Math.random() * 40 + 20,
+        opacity: Math.random() * 0.6 + 0.3,
+        hue: Math.random() * 60 + 220,
+        life: 1,
+        decay: Math.random() * 0.008 + 0.004,
+      });
+    }
+
+    function animateStars() {
+      if (!visibilityMap.get(canvas)) {
+        requestAnimationFrame(animateStars);
+        return;
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (Math.random() < 0.08) spawnStar();
+
+      for (var i = stars.length - 1; i >= 0; i--) {
+        var s = stars[i];
+        s.x += s.vx;
+        s.y += s.vy;
+        s.life -= s.decay;
+
+        if (s.life <= 0 || s.y > canvas.height + 50 || s.x < -50 || s.x > canvas.width + 50) {
+          stars.splice(i, 1);
+          continue;
+        }
+
+        var headX = s.x;
+        var headY = s.y;
+        var tailX = s.x - s.vx * s.length;
+        var tailY = s.y - s.vy * s.length;
+
+        // Glow trail
+        var grad = ctx.createLinearGradient(tailX, tailY, headX, headY);
+        grad.addColorStop(0, 'hsla(' + s.hue + ', 80%, 70%, 0)');
+        grad.addColorStop(0.3, 'hsla(' + s.hue + ', 80%, 70%, ' + s.opacity * 0.3 * s.life + ')');
+        grad.addColorStop(0.7, 'hsla(' + s.hue + ', 80%, 70%, ' + s.opacity * 0.6 * s.life + ')');
+        grad.addColorStop(1, 'hsla(' + s.hue + ', 90%, 85%, ' + s.opacity * s.life + ')');
+
+        ctx.beginPath();
+        ctx.moveTo(tailX, tailY);
+        ctx.lineTo(headX, headY);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        // Bright head
+        ctx.beginPath();
+        ctx.arc(headX, headY, 2 * s.life, 0, Math.PI * 2);
+        ctx.fillStyle = 'hsla(' + s.hue + ', 90%, 90%, ' + s.opacity * s.life + ')';
+        ctx.fill();
+
+        // Outer glow
+        ctx.beginPath();
+        ctx.arc(headX, headY, 5 * s.life, 0, Math.PI * 2);
+        ctx.fillStyle = 'hsla(' + s.hue + ', 80%, 70%, ' + s.opacity * 0.2 * s.life + ')';
+        ctx.fill();
+      }
+
+      requestAnimationFrame(animateStars);
+    }
+
+    animateStars();
+  })();
+
+  // ============================================================ — Pulsing Energy Rings
   // ============================================================
   (function () {
     var setup = setupCanvas('newsletter-canvas');

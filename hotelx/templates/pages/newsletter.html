@@ -26,28 +26,29 @@
 
           <!-- Signup form with HTMX -->
           <div id="newsletter-form-container">
-            <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
-                  aria-label="Newsletter signup form"
-                  hx-post="#"
-                  hx-target="#newsletter-form-container"
-                  hx-swap="outerHTML"
-                  hx-trigger="submit"
-                  @submit.prevent="$event.target.querySelector('button').innerHTML = 'Subscribing...'">
+            <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" aria-label="Newsletter signup form"
+              hx-post="#" hx-target="#newsletter-form-container" hx-swap="outerHTML" hx-trigger="submit"
+              @submit.prevent="$event.target.querySelector('button').innerHTML = 'Subscribing...'">
               <label for="newsletter-email" class="sr-only">Email address</label>
-              <input
-                id="newsletter-email"
-                type="email"
-                name="email"
-                placeholder="Enter your email address"
+              <input id="newsletter-email" type="email" name="email" placeholder="Enter your email address"
                 class="input input-bordered bg-base-200/50 border-base-content/20 text-base-content placeholder:text-base-content/40 w-full focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                required
-                aria-required="true"
-              />
-              <button type="submit" class="btn btn-accent text-white font-semibold px-8 border-0 shadow-lg shadow-accent/25 hover:shadow-xl transition-all duration-300">
-                Subscribe
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
+                required aria-required="true" />
+              <button type="submit"
+                class="btn-ignite relative btn btn-accent text-white font-semibold px-8 border-0 shadow-lg shadow-accent/25 hover:shadow-xl transition-all duration-300 rounded-xl">
+                <span class="ignite-border">
+                  <span class="trace trace-top"></span>
+                  <span class="trace trace-right"></span>
+                  <span class="trace trace-bottom"></span>
+                  <span class="trace trace-left"></span>
+                </span>
+                <span class="relative z-10 flex items-center gap-2">
+                  Subscribe
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
               </button>
             </form>
           </div>
@@ -55,19 +56,24 @@
           <!-- Trust badges -->
           <div class="flex flex-wrap items-center justify-center gap-6 mt-10 text-base-content/30 text-xs">
             <span class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
               Secure &amp; Private
             </span>
             <span class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               No Spam Guarantee
             </span>
             <span class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
               Exclusive Offers

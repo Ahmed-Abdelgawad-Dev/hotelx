@@ -26,15 +26,13 @@
   <!-- Desktop nav -->
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1 gap-1">
-      <li><a href="#rooms" class="font-medium text-sm tracking-wide hover:text-primary transition-colors">Rooms</a></li>
-      <li><a href="#about" class="font-medium text-sm tracking-wide hover:text-primary transition-colors">About</a></li>
-      <li><a href="#why-choose" class="font-medium text-sm tracking-wide hover:text-primary transition-colors">Why
-          Us</a></li>
-      <li><a href="#reviews" class="font-medium text-sm tracking-wide hover:text-primary transition-colors">Reviews</a>
-      </li>
-      <li><a href="#faq" class="font-medium text-sm tracking-wide hover:text-primary transition-colors">FAQ</a></li>
-      <li><a href="#newsletter"
-          class="font-medium text-sm tracking-wide hover:text-primary transition-colors">Contact</a></li>
+      <li><a href="#rooms" class="nav-link-underline font-medium text-sm tracking-wide">Rooms</a></li>
+      <li><a href="#about" class="nav-link-underline font-medium text-sm tracking-wide">About</a></li>
+      <li><a href="#why-choose" class="nav-link-underline font-medium text-sm tracking-wide">Why Us</a></li>
+      <li><a href="#reviews" class="nav-link-underline font-medium text-sm tracking-wide">Reviews</a></li>
+      <li><a href="{% url 'team' %}" class="nav-link-underline font-medium text-sm tracking-wide">Our Team</a></li>
+      <li><a href="#faq" class="nav-link-underline font-medium text-sm tracking-wide">FAQ</a></li>
+      <li><a href="#newsletter" class="nav-link-underline font-medium text-sm tracking-wide">Contact</a></li>
     </ul>
   </div>
 
@@ -54,7 +52,16 @@
       </svg>
     </button>
 
-    <a href="#hero" class="btn btn-accent btn-sm text-white font-semibold shadow-lg shadow-accent/20">Book Now</a>
+    <!-- Book Now igniting button -->
+    <a href="#hero" class="btn-ignite relative btn btn-accent btn-sm text-white font-semibold shadow-lg shadow-accent/20 rounded-lg">
+      <span class="ignite-border">
+        <span class="trace trace-top"></span>
+        <span class="trace trace-right"></span>
+        <span class="trace trace-bottom"></span>
+        <span class="trace trace-left"></span>
+      </span>
+      <span class="relative z-10">Book Now</span>
+    </a>
   </div>
 
   <!-- Mobile drawer overlay -->
@@ -88,6 +95,7 @@
       <li><a href="#about" class="text-base font-medium py-3">About</a></li>
       <li><a href="#why-choose" class="text-base font-medium py-3">Why Us</a></li>
       <li><a href="#reviews" class="text-base font-medium py-3">Reviews</a></li>
+      <li><a href="{% url 'team' %}" class="text-base font-medium py-3">Our Team</a></li>
       <li><a href="#faq" class="text-base font-medium py-3">FAQ</a></li>
       <li><a href="#newsletter" class="text-base font-medium py-3">Contact</a></li>
     </ul>
