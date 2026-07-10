@@ -1,0 +1,217 @@
+{% load static %}
+<section id="team" class="relative py-24 lg:py-32 bg-base-300 overflow-hidden" aria-label="Hotel team">
+  <!-- Canvas background: Shooting Stars -->
+  <canvas id="team-section-canvas" class="canvas-bg" aria-hidden="true"></canvas>
+
+  <!-- Background decoration -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+  <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-primary/5 to-transparent pointer-events-none">
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal-fade">
+      <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">Our People</span>
+      <h2 class="text-4xl sm:text-5xl font-bold text-base-content mb-6">
+        Meet the <span class="gradient-text">Team</span>
+      </h2>
+      <p class="text-base-content/60 text-lg font-light leading-relaxed">
+        Behind every great stay is a dedicated team of hospitality professionals committed to making your experience
+        truly unforgettable.
+      </p>
+    </div>
+
+    <!-- Staff grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      <!-- Staff 1: General Manager -->
+      <div
+        class="glass-panel rounded-2xl overflow-hidden text-center group hover:shadow-xl transition-all duration-500 reveal-stagger">
+        <div class="relative h-64 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-base-300/80 to-transparent z-10"></div>
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Ahmed Abdel Moneim — General Manager"
+            class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+            loading="lazy" />
+          <div class="absolute bottom-4 left-4 z-20 text-left">
+            <h3 class="text-xl font-bold text-white">Ahmed Abdel Moneim</h3>
+            <p class="text-sm text-white/80 font-medium">General Manager</p>
+          </div>
+        </div>
+        <div class="p-5 text-left">
+          <p class="text-sm text-base-content/60 leading-relaxed">
+            With over 15 years of hospitality leadership, Ahmed ensures every guest experience at hotelx exceeds
+            expectations.
+          </p>
+        </div>
+      </div>
+
+      <!-- Staff 2: Head Concierge -->
+      <div
+        class="glass-panel rounded-2xl overflow-hidden text-center group hover:shadow-xl transition-all duration-500 reveal-stagger">
+        <div class="relative h-64 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-base-300/80 to-transparent z-10"></div>
+          <img
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Sofia Martinez — Head Concierge"
+            class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+            loading="lazy" />
+          <div class="absolute bottom-4 left-4 z-20 text-left">
+            <h3 class="text-xl font-bold text-white">Sofia Martinez</h3>
+            <p class="text-sm text-white/80 font-medium">Head Concierge</p>
+          </div>
+        </div>
+        <div class="p-5 text-left">
+          <p class="text-sm text-base-content/60 leading-relaxed">
+            Fluent in five languages, Sofia orchestrates bespoke itineraries and secures the finest reservations for our
+            guests.
+          </p>
+        </div>
+      </div>
+
+      <!-- Staff 3: Executive Chef -->
+      <div
+        class="glass-panel rounded-2xl overflow-hidden text-center group hover:shadow-xl transition-all duration-500 reveal-stagger">
+        <div class="relative h-64 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-base-300/80 to-transparent z-10"></div>
+          <img
+            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="James Harrington — Executive Chef"
+            class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+            loading="lazy" />
+          <div class="absolute bottom-4 left-4 z-20 text-left">
+            <h3 class="text-xl font-bold text-white">James Harrington</h3>
+            <p class="text-sm text-white/80 font-medium">Executive Chef</p>
+          </div>
+        </div>
+        <div class="p-5 text-left">
+          <p class="text-sm text-base-content/60 leading-relaxed">
+            A Michelin-starred chef with a passion for locally sourced ingredients and globally inspired cuisine.
+          </p>
+        </div>
+      </div>
+
+      <!-- Staff 4: Head of Housekeeping -->
+      <div
+        class="glass-panel rounded-2xl overflow-hidden text-center group hover:shadow-xl transition-all duration-500 reveal-stagger">
+        <div class="relative h-64 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-base-300/80 to-transparent z-10"></div>
+          <img
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Priya Sharma — Head of Housekeeping"
+            class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+            loading="lazy" />
+          <div class="absolute bottom-4 left-4 z-20 text-left">
+            <h3 class="text-xl font-bold text-white">Priya Sharma</h3>
+            <p class="text-sm text-white/80 font-medium">Head of Housekeeping</p>
+          </div>
+        </div>
+        <div class="p-5 text-left">
+          <p class="text-sm text-base-content/60 leading-relaxed">
+            Priya leads an award-winning housekeeping team that maintains the impeccable standards hotelx is known for.
+          </p>
+        </div>
+      </div>
+
+      <!-- Staff 5: Guest Relations Manager -->
+      <div
+        class="glass-panel rounded-2xl overflow-hidden text-center group hover:shadow-xl transition-all duration-500 reveal-stagger">
+        <div class="relative h-64 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-base-300/80 to-transparent z-10"></div>
+          <img
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Marcus Chen — Guest Relations Manager"
+            class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+            loading="lazy" />
+          <div class="absolute bottom-4 left-4 z-20 text-left">
+            <h3 class="text-xl font-bold text-white">Marcus Chen</h3>
+            <p class="text-sm text-white/80 font-medium">Guest Relations Manager</p>
+          </div>
+        </div>
+        <div class="p-5 text-left">
+          <p class="text-sm text-base-content/60 leading-relaxed">
+            Marcus turns every guest interaction into a memorable moment with warmth, attentiveness, and genuine care.
+          </p>
+        </div>
+      </div>
+
+      <!-- Staff 6: Spa Director -->
+      <div
+        class="glass-panel rounded-2xl overflow-hidden text-center group hover:shadow-xl transition-all duration-500 reveal-stagger">
+        <div class="relative h-64 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-base-300/80 to-transparent z-10"></div>
+          <img
+            src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Elena Vasquez — Spa Director"
+            class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+            loading="lazy" />
+          <div class="absolute bottom-4 left-4 z-20 text-left">
+            <h3 class="text-xl font-bold text-white">Elena Vasquez</h3>
+            <p class="text-sm text-white/80 font-medium">Spa Director</p>
+          </div>
+        </div>
+        <div class="p-5 text-left">
+          <p class="text-sm text-base-content/60 leading-relaxed">
+            Elena brings holistic wellness traditions from around the world to curate rejuvenating spa experiences.
+          </p>
+        </div>
+      </div>
+
+      <!-- Staff 7: Front Office Manager -->
+      <div
+        class="glass-panel rounded-2xl overflow-hidden text-center group hover:shadow-xl transition-all duration-500 reveal-stagger">
+        <div class="relative h-64 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-base-300/80 to-transparent z-10"></div>
+          <img
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Olivia Thompson — Front Office Manager"
+            class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+            loading="lazy" />
+          <div class="absolute bottom-4 left-4 z-20 text-left">
+            <h3 class="text-xl font-bold text-white">Olivia Thompson</h3>
+            <p class="text-sm text-white/80 font-medium">Front Office Manager</p>
+          </div>
+        </div>
+        <div class="p-5 text-left">
+          <p class="text-sm text-base-content/60 leading-relaxed">
+            Olivia ensures every check-in is seamless and every request is handled with speed and a smile.
+          </p>
+        </div>
+      </div>
+
+      <!-- Staff 8: Events Coordinator -->
+      <div
+        class="glass-panel rounded-2xl overflow-hidden text-center group hover:shadow-xl transition-all duration-500 reveal-stagger">
+        <div class="relative h-64 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-base-300/80 to-transparent z-10"></div>
+          <img
+            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="David Park — Events Coordinator"
+            class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+            loading="lazy" />
+          <div class="absolute bottom-4 left-4 z-20 text-left">
+            <h3 class="text-xl font-bold text-white">David Park</h3>
+            <p class="text-sm text-white/80 font-medium">Events Coordinator</p>
+          </div>
+        </div>
+        <div class="p-5 text-left">
+          <p class="text-sm text-base-content/60 leading-relaxed">
+            From intimate dinners to grand celebrations, David orchestrates flawless events that exceed every
+            expectation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to action -->
+    <div class="text-center mt-14 reveal-fade">
+      <a href="{% url 'team' %}" class="btn btn-outline btn-lg px-10 font-semibold glass-panel rounded-xl">
+        View Full Team
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
