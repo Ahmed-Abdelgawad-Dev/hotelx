@@ -1,8 +1,21 @@
+import logging
+from io import BytesIO
+
+from django.core.files.base import ContentFile
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.text import slugify
 from imagekit.models import ImageSpecField, ProcessedImageField
 from imagekit.processors import ResizeToFit, Transpose
+
+from hotelx.core.helpers import (
+    IMAGE_LABEL_CONFIGS,
+    ROOM_IMAGE_LABELS,
+    get_label_config,
+    image_modify,
+)
+
+logger = logging.getLogger(__name__)
 
 
 class RoomCategory(models.Model):
@@ -77,7 +90,6 @@ class RoomCategoryImage(models.Model):
     )
     image = ProcessedImageField(
         upload_to="room_categories/",
-        processors=[Transpose(), ResizeToFit(1920, 1080)],
         format="WEBP",
         options={"quality": 85},
     )
@@ -92,10 +104,26 @@ class RoomCategoryImage(models.Model):
     )
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
+    # Label field to determine image processing based on IMAGE_LABEL_CONFIGS
+    label = models.CharField(
+        max_length=50,
+        choices=[
+            (label, config["description"])
+            for label, config in ROOM_IMAGE_LABELS.items()
+        ],
+        default="room_category",
+        help_text="Image label determines processing based on best practices",
+    )
+
     # Thumbnail spec — generated on-demand, cached automatically
+    # Dimensions are read from the central IMAGE_LABEL_CONFIGS
+    _thumbnail_cfg = IMAGE_LABEL_CONFIGS["thumbnail"]
     thumbnail = ImageSpecField(
         source="image",
-        processors=[Transpose(), ResizeToFit(400, 300)],
+        processors=[
+            Transpose(),
+            ResizeToFit(_thumbnail_cfg["width"], _thumbnail_cfg["height"]),
+        ],
         format="WEBP",
         options={"quality": 75},
     )
@@ -116,8 +144,52 @@ class RoomCategoryImage(models.Model):
         return f"Image for {self.room_category.name} ({'Main' if self.is_main else 'Secondary'})"
 
     def save(self, *args, **kwargs) -> None:
+        """
+        Save the room category image, processing it according to its label configuration.
+
+        - If ``is_main`` is True, the effective label becomes "hero" so the image gets
+          Full HD sharpened treatment.
+        - The uploaded image is opened with Pillow, resized, and filtered according to
+          the matching ``IMAGE_LABEL_CONFIGS`` entry, then stored as WEBP.
+        - Only one image per room category may have ``is_main=True``.
+        """
+        # --- Enforce single main image ---
         if self.is_main:
             RoomCategoryImage.objects.filter(
                 room_category=self.room_category, is_main=True
             ).exclude(pk=self.pk).update(is_main=False)
+
+        # --- Process the image according to its label ---
+        # (Only process on first upload — skip re-processing on subsequent saves)
+        if self.pk is None and self.image:
+            effective_label = "hero" if self.is_main else self.label
+            config = get_label_config(effective_label)
+
+            if config:
+                try:
+                    processed_img = image_modify(
+                        self.image,
+                        config["width"],
+                        config["height"],
+                        label=effective_label,
+                    )
+
+                    # Save the processed PIL image back into the ImageField as WEBP
+                    buffer = BytesIO()
+                    processed_img.save(buffer, format="WEBP", quality=85)
+
+                    slug = self.room_category.slug or "room"
+                    file_name = f"{slug}_{effective_label}.webp"
+                    self.image.save(
+                        file_name,
+                        ContentFile(buffer.getvalue()),
+                        save=False,
+                    )
+                except Exception as e:
+                    logger.error(
+                        "Failed to process image for label '%s': %s",
+                        effective_label,
+                        e,
+                    )
+
         super().save(*args, **kwargs)

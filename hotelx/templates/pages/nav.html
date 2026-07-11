@@ -1,42 +1,41 @@
 {% load static i18n %}
 <nav class="navbar fixed top-0 left-0 right-0 z-50 bg-base-300/80 backdrop-blur-xl transition-all duration-300"
-  id="mainNav" aria-label="Main navigation" x-data="{ scrolled: false }"
+  id="mainNav" aria-label="Main navigation" x-data="{ scrolled: false, mobileMenuOpen: false }"
   x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 50)"
   :class="{ 'shadow-lg bg-base-300/95': scrolled, 'shadow-none': !scrolled }">
 
-  <div class="navbar-start">
-    <!-- Mobile menu toggle -->
-    <button class="btn btn-ghost lg:hidden" aria-label="Toggle navigation menu" aria-expanded="false"
-      :aria-expanded="mobileMenuOpen" @click="mobileMenuOpen = !mobileMenuOpen">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-        x-show="!mobileMenuOpen">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-        x-show="mobileMenuOpen" x-cloak>
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
+  <div class="navbar-start pl-1 sm:pl-2">
+    <!-- Mobile menu toggle — redesigned hamburger (stays in position) -->
+    <button class="btn btn-ghost lg:hidden relative w-10 h-10 p-2 focus:outline-none"
+      aria-label="Toggle navigation menu" aria-expanded="false" :aria-expanded="mobileMenuOpen"
+      @click="mobileMenuOpen = !mobileMenuOpen">
+      <span class="block absolute left-2 top-3 w-6 h-0.5 bg-base-content rounded transition-all duration-300"
+        :class="{ 'rotate-45 top-4': mobileMenuOpen }"></span>
+      <span class="block absolute left-2 top-[18px] w-6 h-0.5 bg-base-content rounded transition-all duration-300"
+        :class="{ 'opacity-0': mobileMenuOpen }"></span>
+      <span class="block absolute left-2 bottom-3 w-6 h-0.5 bg-base-content rounded transition-all duration-300"
+        :class="{ '-rotate-45 bottom-4': mobileMenuOpen }"></span>
     </button>
 
-    <a href="{% url 'home' %}" class="btn btn-ghost text-xl font-heading font-bold tracking-wide text-base-content">
-      <span class="text-primary">hotel</span><span class="text-accent">x</span>
+    <a href="{% url 'home' %}"
+      class="btn btn-ghost text-xl font-heading font-bold tracking-wide text-base-content ml-1 lg:ml-4">
+      <span class="text-primary">Il</span><span class="text-accent">mercato</span>
     </a>
   </div>
 
-  <!-- Desktop nav -->
+  <!-- Desktop nav — reordered: Rooms, Galleries, Why Us, Our Team, FAQ, Contact Us -->
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1 gap-1">
       <li><a href="#rooms" class="nav-link-underline font-medium text-sm tracking-wide">Rooms</a></li>
-      <li><a href="#about" class="nav-link-underline font-medium text-sm tracking-wide">About</a></li>
+      <li><a href="#about" class="nav-link-underline font-medium text-sm tracking-wide">Galleries</a></li>
       <li><a href="#why-choose" class="nav-link-underline font-medium text-sm tracking-wide">Why Us</a></li>
-      <li><a href="#reviews" class="nav-link-underline font-medium text-sm tracking-wide">Reviews</a></li>
-      <li><a href="{% url 'team' %}" class="nav-link-underline font-medium text-sm tracking-wide">Our Team</a></li>
+      <li><a href="#team" class="nav-link-underline font-medium text-sm tracking-wide">Our Team</a></li>
       <li><a href="#faq" class="nav-link-underline font-medium text-sm tracking-wide">FAQ</a></li>
-      <li><a href="#newsletter" class="nav-link-underline font-medium text-sm tracking-wide">Contact</a></li>
+      <li><a href="#contact" class="nav-link-underline font-medium text-sm tracking-wide">Contact Us</a></li>
     </ul>
   </div>
 
-  <div class="navbar-end gap-1 sm:gap-2">
+  <div class="navbar-end gap-0 sm:gap-1 pr-1 sm:pr-2">
     <!-- Theme toggle -->
     <button class="btn btn-ghost btn-sm btn-square glass-panel" aria-label="Toggle theme"
       @click="theme = theme === 'dark' ? 'light' : 'dark'; localStorage.setItem('theme', theme); document.documentElement.setAttribute('data-theme', theme)">
@@ -52,8 +51,9 @@
       </svg>
     </button>
 
-    <!-- Book Now igniting button -->
-    <a href="#hero" class="btn-ignite relative btn btn-accent btn-sm text-white font-semibold shadow-lg shadow-accent/20 rounded-lg">
+    <!-- Book Now igniting button — WhatsApp redirect + primary (indigo) color -->
+    <a href="https://wa.me/201026290435"
+      class="btn-ignite relative btn btn-primary btn-sm text-white font-semibold shadow-lg shadow-primary/20 rounded-lg">
       <span class="ignite-border">
         <span class="trace trace-top"></span>
         <span class="trace trace-right"></span>
@@ -64,7 +64,7 @@
     </a>
   </div>
 
-  <!-- Mobile drawer overlay -->
+  <!-- Mobile drawer overlay — no shifting -->
   <div x-show="mobileMenuOpen" x-cloak x-transition:enter="transition ease-out duration-200"
     x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
     x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
@@ -72,16 +72,16 @@
     @click="mobileMenuOpen = false" aria-hidden="true">
   </div>
 
-  <!-- Mobile drawer panel -->
+  <!-- Mobile drawer panel — fixed positioning, never shifts -->
   <div x-show="mobileMenuOpen" x-cloak x-transition:enter="transition ease-out duration-300"
     x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
     x-transition:leave="transition ease-in duration-200" x-transition:leave-start="translate-x-0"
     x-transition:leave-end="-translate-x-full"
-    class="fixed top-0 left-0 z-50 h-full w-72 bg-base-300 shadow-2xl lg:hidden" role="dialog" aria-modal="true"
+    class="fixed top-0 left-0 z-[60] h-full w-72 bg-base-300 shadow-2xl lg:hidden" role="dialog" aria-modal="true"
     aria-label="Mobile navigation">
     <div class="flex items-center justify-between p-4 border-b border-base-content/10">
       <a href="{% url 'home' %}" class="text-xl font-heading font-bold" @click="mobileMenuOpen = false">
-        <span class="text-primary">hotel</span><span class="text-accent">x</span>
+        <span class="text-primary">Il</span><span class="text-accent">mercato</span>
       </a>
       <button class="btn btn-ghost btn-sm btn-square" @click="mobileMenuOpen = false" aria-label="Close menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -89,15 +89,13 @@
         </svg>
       </button>
     </div>
-    <ul class="menu p-4 w-full" @click="mobileMenuOpen = false">
-      <li><a href="#hero" class="text-base font-medium py-3">Home</a></li>
-      <li><a href="#rooms" class="text-base font-medium py-3">Rooms</a></li>
-      <li><a href="#about" class="text-base font-medium py-3">About</a></li>
-      <li><a href="#why-choose" class="text-base font-medium py-3">Why Us</a></li>
-      <li><a href="#reviews" class="text-base font-medium py-3">Reviews</a></li>
-      <li><a href="{% url 'team' %}" class="text-base font-medium py-3">Our Team</a></li>
-      <li><a href="#faq" class="text-base font-medium py-3">FAQ</a></li>
-      <li><a href="#newsletter" class="text-base font-medium py-3">Contact</a></li>
+    <ul class="menu p-4 w-full space-y-1" @click="mobileMenuOpen = false">
+      <li><a href="#rooms" class="nav-link-underline font-medium text-base py-3 block">Rooms</a></li>
+      <li><a href="#about" class="nav-link-underline font-medium text-base py-3 block">Galleries</a></li>
+      <li><a href="#why-choose" class="nav-link-underline font-medium text-base py-3 block">Why Us</a></li>
+      <li><a href="#team" class="nav-link-underline font-medium text-base py-3 block">Our Team</a></li>
+      <li><a href="#faq" class="nav-link-underline font-medium text-base py-3 block">FAQ</a></li>
+      <li><a href="#contact" class="nav-link-underline font-medium text-base py-3 block">Contact Us</a></li>
     </ul>
   </div>
 </nav>

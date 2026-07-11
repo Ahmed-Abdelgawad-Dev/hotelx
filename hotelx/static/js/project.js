@@ -1,5 +1,5 @@
 /**
- * hotelx — Project JavaScript
+ * Ilmercato — Project JavaScript
  *
  * Features:
  * - 7 Canvas-based interactive background animations (GSAP-powered, mouse-reactive)
@@ -858,7 +858,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     animateStars();
   })();
-  // ============================================================ — Pulsing Energy Rings
+  // ============================================================
+  // 4i. NEWSLETTER — Pulsing Energy Rings
   // ============================================================
   (function () {
     var setup = setupCanvas('newsletter-canvas');
@@ -951,6 +952,24 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: 'power2.out',
       delay: 0.3,
     });
+
+    // About section — lighter parallax scroll effect
+    const aboutContent = document.querySelector('.about-content-scroll');
+    if (aboutContent) {
+      gsap.from(aboutContent, {
+        scrollTrigger: {
+          trigger: aboutContent,
+          start: 'top 80%',
+          end: 'top 40%',
+          scrub: 1,
+          toggleActions: 'play none none none',
+        },
+        y: 30,
+        opacity: 0.7,
+        duration: 1,
+        ease: 'power1.out',
+      });
+    }
 
     // Section entrance animations using GSAP for more advanced effects
     gsap.utils.toArray('section').forEach(function (section) {

@@ -4,7 +4,8 @@
   <canvas id="reviews-canvas" class="canvas-bg" aria-hidden="true"></canvas>
 
   <!-- Background accent -->
-  <div class="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-primary/5 to-transparent pointer-events-none"></div>
+  <div class="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-primary/5 to-transparent pointer-events-none">
+  </div>
   <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
 
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -19,110 +20,206 @@
       </p>
     </div>
 
-    <!-- Review cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Review 1 -->
-      <div class="glass-panel rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 reveal-stagger">
-        <div class="p-8">
-          <div class="rating rating-sm mb-4">
-            <input type="radio" name="review-1" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="review-1" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="review-1" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="review-1" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="review-1" class="mask mask-star-2 bg-gold-400" disabled checked />
-          </div>
-          <p class="text-base-content/70 leading-relaxed mb-6 italic">
-            "An absolutely stunning experience. The staff went above and beyond to make our anniversary
-            unforgettable. The ocean view suite was breathtaking, and the dining was world-class."
-          </p>
-          <div class="flex items-center gap-3">
-            <div class="avatar placeholder">
-              <div class="w-12 h-12 rounded-full bg-primary text-white">
-                <span class="text-lg font-semibold">SK</span>
+    <!-- Auto-scrolling testimonials carousel (right to left) -->
+    <div class="overflow-hidden reveal-fade" x-data="{ paused: false }">
+      <div class="flex gap-8 animate-scroll-left hover:paused" :class="{ 'pause-animation': paused }"
+        @mouseenter="paused = true" @mouseleave="paused = false" style="width: fit-content;">
+        <!-- First set of testimonial cards -->
+        <div
+          class="glass-panel rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-[350px] md:w-[400px]">
+          <div class="p-8">
+            <div class="rating rating-sm mb-4">
+              <input type="radio" name="ar1" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar1" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar1" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar1" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar1" class="mask mask-star-2 bg-gold-400" disabled checked />
+            </div>
+            <p class="text-base-content/70 leading-relaxed mb-6 italic">
+              "An absolutely stunning experience. The staff went above and beyond to make our anniversary
+              unforgettable. The ocean view suite was breathtaking, and the dining was world-class."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="avatar placeholder">
+                <div class="w-12 h-12 rounded-full bg-primary text-white">
+                  <span class="text-lg font-semibold">SK</span>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-base-content text-sm">Sarah &amp; Kevin</h4>
+                <p class="text-xs text-base-content/50">Stayed in Premium Ocean View</p>
               </div>
             </div>
-            <div>
-              <h4 class="font-semibold text-base-content text-sm">Sarah &amp; Kevin</h4>
-              <p class="text-xs text-base-content/50">Stayed in Premium Ocean View</p>
-            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Review 2 -->
-      <div class="glass-panel rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 reveal-stagger">
-        <div class="p-8">
-          <div class="rating rating-sm mb-4">
-            <input type="radio" name="review-2" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="review-2" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="review-2" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="review-2" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="review-2" class="mask mask-star-2 bg-gold-400" disabled checked />
-          </div>
-          <p class="text-base-content/70 leading-relaxed mb-6 italic">
-            "I travel for business frequently, and hotelx is hands-down the best hotel I've ever stayed at.
-            The Presidential Penthouse redefined luxury for me. Impeccable service at every turn."
-          </p>
-          <div class="flex items-center gap-3">
-            <div class="avatar placeholder">
-              <div class="w-12 h-12 rounded-full bg-accent text-white">
-                <span class="text-lg font-semibold">JR</span>
+        <div
+          class="glass-panel rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-[350px] md:w-[400px]">
+          <div class="p-8">
+            <div class="rating rating-sm mb-4">
+              <input type="radio" name="ar2" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar2" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar2" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar2" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar2" class="mask mask-star-2 bg-gold-400" disabled checked />
+            </div>
+            <p class="text-base-content/70 leading-relaxed mb-6 italic">
+              "I travel for business frequently, and Ilmercato is hands-down the best hotel I've ever stayed at.
+              The Presidential Penthouse redefined luxury for me. Impeccable service at every turn."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="avatar placeholder">
+                <div class="w-12 h-12 rounded-full bg-accent text-white">
+                  <span class="text-lg font-semibold">JR</span>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-base-content text-sm">James Robertson</h4>
+                <p class="text-xs text-base-content/50">Business Traveler</p>
               </div>
             </div>
-            <div>
-              <h4 class="font-semibold text-base-content text-sm">James Robertson</h4>
-              <p class="text-xs text-base-content/50">Business Traveler</p>
-            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Review 3 -->
-      <div class="glass-panel rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 reveal-stagger">
-        <div class="p-8">
-          <div class="rating rating-sm mb-4">
-            <input type="radio" name="review-3" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="review-3" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="review-3" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="review-3" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="review-3" class="mask mask-star-2 bg-gold-400" disabled checked />
-          </div>
-          <p class="text-base-content/70 leading-relaxed mb-6 italic">
-            "Our family vacation was perfect. The kids loved the pool, and we loved the spa. The staff
-            arranged amazing excursions and the room was spacious enough for all five of us."
-          </p>
-          <div class="flex items-center gap-3">
-            <div class="avatar placeholder">
-              <div class="w-12 h-12 rounded-full bg-gold-400 text-white">
-                <span class="text-lg font-semibold">MC</span>
+        <div
+          class="glass-panel rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-[350px] md:w-[400px]">
+          <div class="p-8">
+            <div class="rating rating-sm mb-4">
+              <input type="radio" name="ar3" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar3" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar3" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar3" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar3" class="mask mask-star-2 bg-gold-400" disabled checked />
+            </div>
+            <p class="text-base-content/70 leading-relaxed mb-6 italic">
+              "Our family vacation was perfect. The kids loved the pool, and we loved the spa. The staff
+              arranged amazing excursions and the room was spacious enough for all five of us."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="avatar placeholder">
+                <div class="w-12 h-12 rounded-full bg-gold-400 text-white">
+                  <span class="text-lg font-semibold">MC</span>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-base-content text-sm">Maria &amp; Carlos</h4>
+                <p class="text-xs text-base-content/50">Family Vacation</p>
               </div>
             </div>
-            <div>
-              <h4 class="font-semibold text-base-content text-sm">Maria &amp; Carlos</h4>
-              <p class="text-xs text-base-content/50">Family Vacation</p>
+          </div>
+        </div>
+
+        <!-- Duplicate set for seamless loop -->
+        <div
+          class="glass-panel rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-[350px] md:w-[400px]">
+          <div class="p-8">
+            <div class="rating rating-sm mb-4">
+              <input type="radio" name="ar4" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar4" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar4" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar4" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar4" class="mask mask-star-2 bg-gold-400" disabled checked />
+            </div>
+            <p class="text-base-content/70 leading-relaxed mb-6 italic">
+              "The rooftop infinity pool at sunset is pure magic. The cocktails were sublime and the view of the
+              city skyline was unforgettable. Already planning our return visit!"
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="avatar placeholder">
+                <div class="w-12 h-12 rounded-full bg-primary text-white">
+                  <span class="text-lg font-semibold">AL</span>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-base-content text-sm">Amanda &amp; Luke</h4>
+                <p class="text-xs text-base-content/50">Weekend Getaway</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Overall rating -->
-    <div class="mt-16 text-center reveal-fade">
-      <div class="inline-flex items-center gap-6 glass-panel rounded-2xl px-8 py-6 shadow-md">
-        <div class="text-center">
-          <div class="text-5xl font-bold gradient-text">4.9</div>
-          <div class="text-sm text-base-content/50">Average Rating</div>
-        </div>
-        <div class="w-px h-12 bg-base-content/10"></div>
-        <div class="text-left">
-          <div class="rating rating-sm mb-1">
-            <input type="radio" name="overall" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="overall" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="overall" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="overall" class="mask mask-star-2 bg-gold-400" disabled checked />
-            <input type="radio" name="overall" class="mask mask-star-2 bg-gold-400" disabled checked />
+        <div
+          class="glass-panel rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-[350px] md:w-[400px]">
+          <div class="p-8">
+            <div class="rating rating-sm mb-4">
+              <input type="radio" name="ar5" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar5" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar5" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar5" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar5" class="mask mask-star-2 bg-gold-400" disabled checked />
+            </div>
+            <p class="text-base-content/70 leading-relaxed mb-6 italic">
+              "As a travel writer, I've stayed at hundreds of hotels worldwide. Ilmercato stands out for its
+              attention to detail, warmth of staff, and truly exceptional culinary experience."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="avatar placeholder">
+                <div class="w-12 h-12 rounded-full bg-accent text-white">
+                  <span class="text-lg font-semibold">DT</span>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-base-content text-sm">David T.</h4>
+                <p class="text-xs text-base-content/50">Travel Writer</p>
+              </div>
+            </div>
           </div>
-          <div class="text-sm text-base-content/60">Based on 12,000+ reviews</div>
+        </div>
+
+        <div
+          class="glass-panel rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-[350px] md:w-[400px]">
+          <div class="p-8">
+            <div class="rating rating-sm mb-4">
+              <input type="radio" name="ar6" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar6" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar6" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar6" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar6" class="mask mask-star-2 bg-gold-400" disabled checked />
+            </div>
+            <p class="text-base-content/70 leading-relaxed mb-6 italic">
+              "We got married at Ilmercato and it was beyond anything we could have imagined. The events team
+              orchestrated the perfect day. Every guest raved about the venue for weeks."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="avatar placeholder">
+                <div class="w-12 h-12 rounded-full bg-gold-400 text-white">
+                  <span class="text-lg font-semibold">NP</span>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-base-content text-sm">Nina &amp; Paul</h4>
+                <p class="text-xs text-base-content/50">Held Their Wedding</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="glass-panel rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-[350px] md:w-[400px]">
+          <div class="p-8">
+            <div class="rating rating-sm mb-4">
+              <input type="radio" name="ar7" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar7" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar7" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar7" class="mask mask-star-2 bg-gold-400" disabled checked />
+              <input type="radio" name="ar7" class="mask mask-star-2 bg-gold-400" disabled checked />
+            </div>
+            <p class="text-base-content/70 leading-relaxed mb-6 italic">
+              "The spa treatments at Ilmercato are world-class. I booked a week-long wellness package and left
+              feeling completely transformed. The facilities are gorgeous and the therapists are true professionals."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="avatar placeholder">
+                <div class="w-12 h-12 rounded-full bg-primary text-white">
+                  <span class="text-lg font-semibold">CL</span>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-base-content text-sm">Clara L.</h4>
+                <p class="text-xs text-base-content/50">Wellness Retreat</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
